@@ -356,7 +356,9 @@ public class Amplitude {
         final JSONArray events = pair.second;
         HTTPThread.post(new Runnable() {
           public void run() {
-            makeEventUploadPostRequest(Constants.EVENT_LOG_URL, events.toString(), maxId);
+        	  if(Constants.EVENT_LOG_URL != null && Constants.EVENT_LOG_URL.length() > 0) {
+        		  makeEventUploadPostRequest(Constants.EVENT_LOG_URL, events.toString(), maxId);
+        	  }
           }
         });
       } catch (JSONException e) {
