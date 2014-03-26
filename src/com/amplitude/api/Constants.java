@@ -30,7 +30,7 @@ public class Constants {
   public static final String PREFKEY_USER_ID = PACKAGE_NAME + ".userId";
 
   // 10 seconds
-  public static final long MIN_TIME_BETWEEN_SESSIONS_MILLIS = 10 * 1000;
+  public static final long MIN_TIME_BETWEEN_SESSIONS_MILLIS = 180 * 1000;
 
   public static final String PERMISSION_GET_ACCOUNTS = "android.permission.GET_ACCOUNTS";
   public static final String PERMISSION_READ_PHONE_STATE = "android.permission.READ_PHONE_STATE";
