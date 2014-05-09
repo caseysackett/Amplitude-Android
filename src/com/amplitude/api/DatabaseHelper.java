@@ -45,15 +45,20 @@ class DatabaseHelper extends SQLiteOpenHelper {
 
 	long addEvent(String event) {
 		synchronized (this) {
-			SQLiteDatabase db = getWritableDatabase();
-			ContentValues contentValues = new ContentValues();
-			contentValues.put(Constants.EVENT_FIELD, event);
-			long result = db.insert(Constants.EVENT_TABLE_NAME, null, contentValues);
-			if (result == -1) {
-				Log.w(TAG, "Insert failed");
+			try {
+				SQLiteDatabase db = getWritableDatabase();
+				ContentValues contentValues = new ContentValues();
+				contentValues.put(Constants.EVENT_FIELD, event);
+				long result = db.insert(Constants.EVENT_TABLE_NAME, null, contentValues);
+				if (result == -1) {
+					Log.w(TAG, "Insert failed");
+				}
+				db.close();
+				return result;
+			} catch(Throwable t) {
+				Log.e(TAG, t.getMessage(), t);
+				return -1;
 			}
-			db.close();
-			return result;
 		}
 	}
 
